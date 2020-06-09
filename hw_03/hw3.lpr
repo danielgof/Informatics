@@ -1,12 +1,12 @@
 program hw3;
 
 Type
-  IntMat = array of array of Integer;
+  P = array of array of Integer;
 
 var
-  arr : IntMat;
-  W, H : Integer;
-  i, j, xc, yc, x, y : Integer;
+  arr : P;
+  Sh, V : Integer;
+  i, j, ac, bc, a, b : Integer;
   AddVal : Integer;
   IsAddDirUp : Boolean;
 
@@ -26,71 +26,68 @@ begin
 end;
 
 begin
-  Write('Enter W, H: ');
-  ReadLn(W, H);
+  Write('Enter Sh, V: ');
+  ReadLn(Sh, V);
 
-  SetLength(arr, H);
+  SetLength(arr, V);
+  for i := 0 to V - 1 do
+  SetLength(arr[i], Sh);
 
-  for i := 0 to H - 1 do
-
-
-    SetLength(arr[i], W);
-
-  xc := W;
-  yc := H - 1;
-  x := 0;
-  y := 0;
+  ac := Sh;
+  bc := V - 1;
+  a := 0;
+  b := 0;
 
   AddVal := 1;
 
-  while (xc + yc) > 0 do
+  while (ac + bc) > 0 do
   begin
-    for i := 0 to xc - 1 do
+    for i := 0 to ac - 1 do
     begin
-      arr[y][x + i] := IncDec();
+      arr[b][a + i] := IncDec();
     end;
-    if yc = 0 then
+    if bc = 0 then
       break;
-    xc -= 1;
-    x += i;
-    y += 1;
+    ac -= 1;
+    a += i;
+    b += 1;
 
-    for i := 0 to yc - 1 do
+    for i := 0 to bc - 1 do
     begin
-      arr[y + i][x] := IncDec();
+      arr[b + i][a] := IncDec();
     end;
-    if xc = 0 then
+    if ac = 0 then
       break;
-    yc -= 1;
-    x -= 1;
-    y += i;
+    bc -= 1;
+    a -= 1;
+    b += i;
 
-    for i := 0 to xc - 1 do
+    for i := 0 to ac - 1 do
     begin
-      arr[y][x - i] := IncDec();
+      arr[b][a - i] := IncDec();
     end;
-    if yc = 0 then
+    if bc = 0 then
       break;
-    xc -= 1;
-    x -= i;
-    y -= 1;
+    ac -= 1;
+    a -= i;
+    b -= 1;
 
-    for i := 0 to yc - 1 do
+    for i := 0 to bc - 1 do
     begin
-      arr[y - i][x] := IncDec();
+      arr[b - i][a] := IncDec();
     end;
-    if xc = 0 then
+    if ac = 0 then
       break;
-    yc -= 1;
-    x += 1;
-    y -= i;
+    bc -= 1;
+    a += 1;
+    b -= i;
 
   end;
 
 
-  for i := 0 to H - 1 do
+  for i := 0 to V - 1 do
   begin
-    for j := 0 to W - 1 do
+    for j := 0 to Sh - 1 do
     begin
       Write(arr[i][j]:3);
     end;
@@ -99,4 +96,4 @@ begin
 
 
   ReadLn();
-end.
+end.   
