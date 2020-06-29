@@ -59,7 +59,7 @@ begin
       ReWrite(A[W]);
       N+=1;
     end;
-    WriteLn(A[W], U.name, ' ; ', U.num, ' ; ', U.group);
+    WriteLn(A[W], U.name, ';', U.num, ';', U.group);
   end;
   CloseFile(F);
   for I:= 1 to N do
